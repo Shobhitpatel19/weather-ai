@@ -1,8 +1,11 @@
-const API_KEY = "227066ed65ee5a0a8df6c7e189fef320";
+import dotenv from "dotenv"
+dotenv.config();
+
+
 const makeIconURL = (iconId) => `https://openweathermap.org/img/wn/${iconId}@2x.png`
 
 const getFormattedWeatherData = async (city, units = "metric") => {
-  const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=${units}`;
+  const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.API_KEY}&units=${units}`;
 
   const data = await fetch(URL)
     .then((res) => res.json())
